@@ -12,6 +12,7 @@
 #include "reloself.h"
 #include "apploader.h"
 #include "main.h"
+#include <wiiuse/wpad.h>
 //#include "dol_loader.h"
 
 #define reloc_code_location 0x811f8000

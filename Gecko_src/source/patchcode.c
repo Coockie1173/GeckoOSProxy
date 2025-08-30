@@ -575,6 +575,19 @@ void determine_libogc_hook(void *addr, u32 len)
 }
 
 //---------------------------------------------------------------------------------
+void createbranch(void *addr1, void *addr2)
+//---------------------------------------------------------------------------------
+{
+	u32 blcode;
+	
+	blcode = addr2 - addr1;
+	blcode &= 0x3FFFFFF;
+	blcode |= 0x48000000;
+	*(u32 *)addr1 = blcode;
+	DCFlushRange(addr1, 4);
+}
+
+//---------------------------------------------------------------------------------
 void patchgeckomenu(void *addr, u32 len, void *menuaddr)
 //---------------------------------------------------------------------------------
 {
@@ -592,15 +605,3 @@ void patchgeckomenu(void *addr, u32 len, void *menuaddr)
 	}
 }
 
-//---------------------------------------------------------------------------------
-void createbranch(void *addr1, void *addr2)
-//---------------------------------------------------------------------------------
-{
-	u32 blcode;
-	
-	blcode = addr2 - addr1;
-	blcode &= 0x3FFFFFF;
-	blcode |= 0x48000000;
-	*(u32 *)addr1 = blcode;
-	DCFlushRange(addr1, 4);
-}

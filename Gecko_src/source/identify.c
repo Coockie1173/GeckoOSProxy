@@ -23,6 +23,7 @@
 #include "certs_dat.h"
 #include "fakesign.h"
 #include "main.h"
+#include <wiiuse/wpad.h>
 
 #define sdbuffer 0x90080000
 
@@ -36,6 +37,8 @@ lwp_t channelthread;
 u64 channeltoload = 0x0;
 u8 channelios;
 u8 channelidentified = 0;
+u32 bootid;
+u16 bootindex;
 //static const char certs_fs[] ATTRIBUTE_ALIGN(32) = "/sys/cert.sys";
 static u8 tmdbuf[MAX_SIGNED_TMD_SIZE] ATTRIBUTE_ALIGN(0x20);
 static u8 tikbuf[STD_SIGNED_TIK_SIZE] ATTRIBUTE_ALIGN(0x20);
@@ -229,6 +232,7 @@ void codehandler_rebooter()
 	}
 	
 	WPAD_Shutdown();
+	//WPAD_Shutdown();
 	//sdio_Shutdown();
 	
 	ret = Menu_identify();

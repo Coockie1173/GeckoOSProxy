@@ -37,7 +37,7 @@ u8 widescreen = 0;
 u8 alphapng = 0;
 
 Mtx GXmodelView2D;
-GXRModeObj *rmode;
+//GXRModeObj *rmode;
 u8 *tex_logo1;
 u8 *tex_font1;
 u8 *bubblegfx;
@@ -65,6 +65,10 @@ void gfx_render_direct()
  	VIDEO_WaitVSync();
 }
 
+void gfx_init_stars()
+{
+
+}
 
 //---------------------------------------------------------------------------------
 void gfx_print(u8 *font,s32 x,s32 y,u8 alpha, char *fmt, ...)
